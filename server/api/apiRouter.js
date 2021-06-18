@@ -1,12 +1,14 @@
 const { Router } = require('express')
 const router = Router()
 
-router.use('/auth/registration', (res, req) => {
-  console.log('')
+router.use('/registration', (req, res) => {
+  console.log('auth login')
+
+  res.end()
 })
 
-router.use('/auth/login', (res, req) => {
-  console.log('')
+router.use('/login', (res, req) => {
+  console.log('login')
 })
 
 
