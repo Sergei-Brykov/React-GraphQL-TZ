@@ -1,9 +1,15 @@
 import './App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react"
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [auth, setAuth] = useState(false)
-  const router = useRouter()
+  const history = useHistory();
+
+  useEffect(() => {
+    history.push('./login')
+  }, []);
+
 
   return (
     <div className="App">
