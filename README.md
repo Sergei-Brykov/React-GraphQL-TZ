@@ -32,31 +32,38 @@ Command signature | Description
 Rename `/server/example_env` to `/server/.env` and fill values
 
 ## Development
-make build
+-`make build`
 
-make up
+-`make up`
 
-make shell 
+-`make shell `
 
 ... in docker container 
 
-cd server
+-`cd server`
 
-npm i 
+-`npm i` 
 
-npm run dev
+-`npm run dev`
 
 ... open new terminal
 
-make shell
+-`make shell`
 
 ... in docker container
 
-cd client
+-`cd client`
 
-npm i
+-`npm i`
 
-npm start
+-`npm start`
 
-## Production server setup
-... I must build react app and copy in express static folder, but I`m tired:(
+## Production
+
+make sure that you have locally installed next applications:
+- `docker >= 18.09.4`
+- `make >= 4.2.1` _(install: `apt-get install make`)_
+
+use terminal:
+
+- `./start.sh` 
