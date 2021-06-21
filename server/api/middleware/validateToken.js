@@ -6,7 +6,6 @@ const User = require("../../db/models/user");
 module.exports = async function validateUser(req, res, next) {
   try {
     if (!req.cookies.auth_token) {
-      console.log(1);
       next(new Error("Permission denied!"));
     }
 
@@ -15,7 +14,6 @@ module.exports = async function validateUser(req, res, next) {
     req.user = await User.findOne({ _id: candidate._id, name: candidate.name });
 
     if (!req.user) {
-      console.log(2);
       next(new Error("Permission denied"));
     }
 

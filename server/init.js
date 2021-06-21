@@ -28,7 +28,7 @@ async function init(app) {
 async function createDefaultUser() {
   const name = configEnv.NAME;
   const password = hashPassword(configEnv.PASSWORD);
-  console.log(password);
+
   if (!(await User.findOne({ name, password }))) {
     const admin = new User({ name, password });
     await admin.save();

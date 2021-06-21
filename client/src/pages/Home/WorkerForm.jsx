@@ -44,7 +44,6 @@ export function WorkerForm({
         },
       }).then(() => {
         onClose();
-        console.log(111);
         updateData();
       });
     },

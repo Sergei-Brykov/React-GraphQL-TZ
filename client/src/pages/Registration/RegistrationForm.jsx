@@ -3,9 +3,7 @@ import useForm from "../../hooks/useForm";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrorCreator,
-  logInRequestCreator,
   registrationRequestCreator,
-  registrationResponseCreator,
 } from "../../redux/authReducer";
 import { MainInput } from "../../components/MainInput";
 import { ErrorView } from "../../components/ErrorView";

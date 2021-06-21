@@ -13,7 +13,7 @@ module.exports = async function validateUser(req, res, next) {
     if (!req.user) {
       next(new Error("This user does not exist"));
     }
-    console.log("VALIDATE");
+
     next();
   } catch (e) {
     next(e);

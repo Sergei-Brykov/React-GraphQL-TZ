@@ -23,7 +23,6 @@ export function useAuth() {
         history.push(path.home);
       }
     } else {
-      console.log("reject", pathname, path.authPath);
       if (!path.authPath.includes(pathname)) {
         history.push(path.login);
       }
