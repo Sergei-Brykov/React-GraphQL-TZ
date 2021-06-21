@@ -1,10 +1,10 @@
 export default {
-  spacing: 8,
+  spacing: 10,
   overrides: {
     MuiButton: {
       label: {
-        textTransform: 'none',
-        fontSize: '1rem',
+        textTransform: "none",
+        fontSize: "1rem",
       },
     },
   },

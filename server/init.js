@@ -1,6 +1,7 @@
-const mongoose = require('mongoose')
-const configEnv = require('./config/config')
-const User = require('./db/models/user')
+const mongoose = require("mongoose");
+const configEnv = require("./config/config");
+const User = require("./db/models/user");
+const hashPassword = require("./util/hashPassword");
 
 async function init(app) {
   try {
@@ -8,27 +9,30 @@ async function init(app) {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
-    })
+      useFindAndModify: false,
+    });
 
-    if(!await User.findOne({
-      name: 'admin',
-      password: 'admin'
-    })) {
-      const user = new User({
-        name: 'admin',
-        password: 'admin'
-      })
-
-      await user.save()
-    }
+    await createDefaultUser();
 
     app.listen(configEnv.PORT, (err) => {
-      err ? console.log(err) : console.log("Server start in port " + configEnv.PORT);
+      err
+        ? console.log(err)
+        : console.log("Server start in port " + configEnv.PORT);
     });
   } catch (e) {
-    console.log(e)
-    process.exit(1)
+    console.log(e);
+    process.exit(1);
   }
 }
 
-module.exports = init
+async function createDefaultUser() {
+  const name = configEnv.NAME;
+  const password = hashPassword(configEnv.PASSWORD);
+  console.log(password);
+  if (!(await User.findOne({ name, password }))) {
+    const admin = new User({ name, password });
+    await admin.save();
+  }
+}
+
+module.exports = init;

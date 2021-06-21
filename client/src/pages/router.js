@@ -1,9 +1,22 @@
-import {LoginFormComponent} from "./LoginForm";
+import { LoginPage } from "./Login";
+import { RegistrationPage } from "./Registration";
+import { path } from "../provider/path";
+import { HomePage } from "./Home";
 
 export const routes = [
   {
-    path: '/login',
+    path: path.login,
     exact: true,
-    component: LoginFormComponent
-  }
-]
+    component: LoginPage,
+  },
+  {
+    path: path.registration,
+    exact: true,
+    component: RegistrationPage,
+  },
+  {
+    path: path.home,
+    exact: true,
+    component: HomePage,
+  },
+];

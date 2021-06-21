@@ -1,15 +1,22 @@
-const { Router } = require('express')
-const router = Router()
+const express = require("express");
+const { Router } = require("express");
 
-router.use('/registration', (req, res) => {
-  console.log('auth login')
+const validateUserData = require("./middleware/validateUserData");
+const validateUser = require("./middleware/validateUser");
+const validateToken = require("./middleware/validateToken");
+const registrationNewUser = require("./controllers/registrationNewUser");
+const signIn = require("./controllers/signIn");
+const sendUser = require("./controllers/sendUser");
+const logOutUser = require("./controllers/logOutUser");
 
-  res.end()
-})
+const router = Router();
 
-router.use('/login', (res, req) => {
-  console.log('login')
-})
+router.get("/auth", validateToken, sendUser);
 
+router.use(express.json({ extendet: true }));
 
-module.exports = router
+router.post("/login", validateUserData, validateUser, signIn);
+router.post("/registration", validateUserData, registrationNewUser);
+router.delete("/logout", logOutUser);
+
+module.exports = router;
